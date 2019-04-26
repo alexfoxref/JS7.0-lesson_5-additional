@@ -1,19 +1,10 @@
 'use strict'
 
-let dat = new Date();
-const dateNow = document.querySelector('.date-now'),
-    chooseFirstDate = document.querySelector('.choose-first-date'),
+const chooseFirstDate = document.querySelector('.choose-first-date'),
     chooseSecondDate = document.querySelector('.choose-second-date'),
     daysBetweenDates = document.querySelector('.days-between-dates'),
     startButton = document.querySelector('.start-time-function');
 
-function fixDate(num) {
-    let str = '' + num;
-    if (str.length == 1) {
-        str = '0' + str;
-    };
-    return(str);
-}
 
 function getDayRus(date) {
     let num = date.getDay();
@@ -42,7 +33,14 @@ function getDayRus(date) {
     break;
     }
 }
-dateNow.innerText = `${dat.getHours()}:${dat.getMinutes()}:${dat.getSeconds()} ${fixDate(dat.getDate())}.${fixDate(dat.getMonth() + 1)}.${dat.getFullYear()} ${getDayRus(dat)}`;
+
+let dynaicTime = setInterval(function () {
+    let dat = new Date();
+    const dateNow = document.querySelector('.date-now');
+
+    dateNow.innerText = `${dat.getHours()}:${dat.getMinutes()}:${dat.getSeconds()} ${fixDate(dat.getDate())}.${fixDate(dat.getMonth() + 1)}.${dat.getFullYear()} ${getDayRus(dat)}`;
+}, 1000);
+
 
 function getTime(date) {
     let day = +date.value.slice(0, date.value.indexOf("/")),
@@ -78,3 +76,10 @@ startButton.addEventListener('click', function() {
     }
 });
 
+function fixDate(num) {
+    let str = '' + num;
+    if (str.length == 1) {
+        str = '0' + str;
+    };
+    return(str);
+}
