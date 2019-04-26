@@ -38,7 +38,7 @@ let dynaicTime = setInterval(function () {
     let dat = new Date();
     const dateNow = document.querySelector('.date-now');
 
-    dateNow.innerText = `${dat.getHours()}:${dat.getMinutes()}:${dat.getSeconds()} ${fixDate(dat.getDate())}.${fixDate(dat.getMonth() + 1)}.${dat.getFullYear()} ${getDayRus(dat)}`;
+    dateNow.innerText = `${fixDate(dat.getHours())}:${fixDate(dat.getMinutes())}:${fixDate(dat.getSeconds())} ${fixDate(dat.getDate())}.${fixDate(dat.getMonth() + 1)}.${dat.getFullYear()} ${getDayRus(dat)}`;
 }, 1000);
 
 
